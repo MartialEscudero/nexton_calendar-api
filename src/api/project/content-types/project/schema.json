@@ -1,0 +1,57 @@
+{
+  "kind": "collectionType",
+  "collectionName": "projects",
+  "info": {
+    "singularName": "project",
+    "pluralName": "projects",
+    "displayName": "Project",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "code": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "color_code": {
+      "type": "string",
+      "default": "#FFFFFF",
+      "required": true,
+      "maxLength": 7
+    },
+    "name": {
+      "type": "string"
+    },
+    "njp": {
+      "type": "float",
+      "default": 0,
+      "required": true
+    },
+    "njr": {
+      "type": "float",
+      "required": true,
+      "default": 0
+    },
+    "users": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "plugin::users-permissions.user",
+      "mappedBy": "projectsListUser"
+    },
+    "finished": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "poles": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::pole.pole",
+      "mappedBy": "projects"
+    }
+  }
+}
